@@ -5,7 +5,6 @@
 
 .button {
     background-color: #AF4425;
-    /* Кайєнський перець */
     color: white;
     font-size: 1rem;
     padding: 10px 20px;
@@ -18,10 +17,16 @@
 
 .button:hover {
     background-color: #662E1C;
-    /* Кориця */
     transform: scale(1.05);
 }
 
 .button:active {
     transform: scale(1);
+}
+
+@media (max-width: 768px) {
+    .button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
 }

@@ -1,10 +1,11 @@
 .container {
     padding: 20px;
     background-color: #EBDCB2;
-    /* Сливки */
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
+    max-width: 1200px;
+    width: 95%;
 }
 
 .backButton {
@@ -30,14 +31,13 @@
 .title {
     font-size: 2rem;
     color: #AF4425;
-    /* Кайєнський перець */
     margin-bottom: 10px;
+    word-wrap: break-word;
 }
 
 .userScore {
     font-size: 1.2rem;
     color: #662E1C;
-    /* Кориця */
     margin-bottom: 10px;
 }
 
@@ -53,11 +53,11 @@
     margin: 0;
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .genre {
     background-color: #C9A66B;
-    /* Карамель */
     padding: 5px 10px;
     border-radius: 8px;
     color: white;
@@ -67,13 +67,13 @@
     margin-top: 20px;
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .link {
     text-decoration: none;
     color: white;
     background-color: #AF4425;
-    /* Кайєнський перець */
     padding: 10px 15px;
     border-radius: 8px;
     transition: background-color 0.3s ease;
@@ -81,5 +81,87 @@
 
 .link:hover {
     background-color: #662E1C;
-    /* Кориця */
+}
+
+/* Планшети */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    .details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .poster {
+        max-width: 250px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .genres {
+        justify-content: center;
+    }
+
+    .links {
+        justify-content: center;
+    }
+}
+
+/* Мобільні телефони */
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    .poster {
+        max-width: 200px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .userScore {
+        font-size: 1.1rem;
+    }
+
+    .overview {
+        font-size: 0.9rem;
+    }
+
+    .genre {
+        padding: 4px 8px;
+        font-size: 0.9rem;
+    }
+
+    .link {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Для дуже маленьких екранів */
+@media screen and (max-width: 320px) {
+    .poster {
+        max-width: 150px;
+    }
+
+    .title {
+        font-size: 1.25rem;
+    }
 }
