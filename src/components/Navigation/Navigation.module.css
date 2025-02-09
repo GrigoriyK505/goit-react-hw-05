@@ -1,0 +1,32 @@
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #AF4425;
+    /* Кайєнський перець */
+    padding: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.link:hover {
+    background-color: #662E1C;
+    /* Кориця */
+    transform: scale(1.05);
+}
+
+.active {
+    background-color: #C9A66B;
+    /* Карамель */
+    color: #FFFFFF;
+}

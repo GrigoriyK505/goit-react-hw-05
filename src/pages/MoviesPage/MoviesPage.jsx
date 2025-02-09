@@ -1,24 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import styles from './MoviesPage.module.css';
+import { useEffect, useState } from 'react';
 import MovieList from '../../components/MovieList/MovieList';
 import { useSearchParams } from 'react-router-dom';
 import { searchMovies } from '../../services/api';
 
 function MoviesPage() {
-  const [SearchParams, setSearchParams] = useSearchParams()
-  const [query, setQuery] = useState(SearchParams.get("q") || "");
+  const [SearchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(SearchParams.get('q') || '');
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    searchMovies(query).then(setMovies).then(() => { setLoading(false) });
-  }, [query]);
+    if (query) {
+      setLoading(true);
+      searchMovies(query).then(setMovies).then(() => {
+        setLoading(false);
+      });
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    searchMovies(query).then(setMovies).then(() => { setLoading(false) });
-    updateSearchParams("q", query);
+    searchMovies(query).then(setMovies).then(() => {
+      setLoading(false);
+    });
+    updateSearchParams('q', query);
   };
 
   const updateSearchParams = (key, value) => {
@@ -27,17 +34,23 @@ function MoviesPage() {
     setSearchParams(updateParams);
   };
 
-
-
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input value={query} onChange={(e) => setQuery(e.target.value)}/>
-        <button type='submit'>Search</button>      
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <input
+          className={styles.input}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button type="submit" className={styles.button}>
+          Search
+        </button>
       </form>
-      <MovieList movies={movies} loading={loading} />
+      <div className={styles.movieList}>
+        <MovieList movies={movies} loading={loading} />
+      </div>
     </div>
-  )
+  );
 }
 
-export default MoviesPage
+export default MoviesPage;

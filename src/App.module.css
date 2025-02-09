@@ -1,0 +1,42 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navigation {
+  background-color: #AF4425;
+  /* Кайєнський перець */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.suspenseFallback {
+  font-size: 1.2rem;
+  color: #662E1C;
+  /* Кориця */
+  text-align: center;
+  padding: 20px;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .navigation {
+    text-align: center;
+    padding: 8px 15px;
+  }
+
+  .suspenseFallback {
+    font-size: 1rem;
+    padding: 15px;
+  }
+}
