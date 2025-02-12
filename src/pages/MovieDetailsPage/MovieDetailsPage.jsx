@@ -1,11 +1,14 @@
 import styles from './MovieDetailsPage.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import BackButton from '../../components/BackButton/BackButton';
-import { Link, Outlet, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from '../../services/api.js';
 
 function MovieDetailsPage() {
   const { movieId } = useParams();
+  const location = useLocation();
+  const backLinkRef = useRef(location.state?.from || '/movies');
+
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -13,7 +16,7 @@ function MovieDetailsPage() {
     setLoading(true);
     fetchMovieDetails(movieId)
       .then(setMovie)
-      .then(() => setLoading(false));
+      .finally(() => setLoading(false));
   }, [movieId]);
 
   if (loading) {
@@ -23,7 +26,7 @@ function MovieDetailsPage() {
   return movie ? (
     <div className={styles.container}>
       <div className={styles.backButton}>
-        <BackButton />
+        <BackButton backPath={backLinkRef.current} />
       </div>
       <div className={styles.details}>
         <img
@@ -47,10 +50,10 @@ function MovieDetailsPage() {
         </div>
       </div>
       <div className={styles.links}>
-        <Link to={`cast`} className={styles.link}>
+        <Link to="cast" className={styles.link}>
           Cast
         </Link>
-        <Link to={`reviews`} className={styles.link}>
+        <Link to="reviews" className={styles.link}>
           Reviews
         </Link>
       </div>

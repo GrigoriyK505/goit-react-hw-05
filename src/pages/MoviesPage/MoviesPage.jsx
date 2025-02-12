@@ -17,21 +17,11 @@ function MoviesPage() {
         setLoading(false);
       });
     }
-  }, []);
+  }, [query]);
 
-  const handleSubmit = (e) => {
+ const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    searchMovies(query).then(setMovies).then(() => {
-      setLoading(false);
-    });
-    updateSearchParams('q', query);
-  };
-
-  const updateSearchParams = (key, value) => {
-    const updateParams = new URLSearchParams(SearchParams);
-    updateParams.set(key, value);
-    setSearchParams(updateParams);
+    setSearchParams({ q: query });
   };
 
   return (
