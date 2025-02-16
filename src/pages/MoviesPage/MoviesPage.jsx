@@ -8,16 +8,17 @@ function MoviesPage() {
   const [SearchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(SearchParams.get('q') || '');
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); 
+  const q = SearchParams.get('q') || "";
 
   useEffect(() => {
-    if (query) {
+    if (q) {
       setLoading(true);
-      searchMovies(query).then(setMovies).then(() => {
+      searchMovies(q).then(setMovies).then(() => {
         setLoading(false);
       });
     }
-  }, [query]);
+  }, [q]);
 
  const handleSubmit = (e) => {
     e.preventDefault();
